@@ -1,0 +1,21 @@
+quarkus:
+  application:
+    name: fail-service
+    version: 1.0
+  consul-config:
+    enabled: true
+    properties-value-keys: config/${quarkus.application.name}
+    agent:
+      token:
+  consul-discovery:
+    enabled: true
+  http:
+    port: 0
+mp:
+  messaging:
+    incoming:
+      q.fail-queue:
+        connector: smallrye-rabbitmq
+        queue:
+          name: q.fail-queue
+        durable: false
